@@ -113,14 +113,14 @@ public class Model extends Observable {
         // TODO: Modify this.board (and perhaps this.score) to account
         // for the tilt to the Side SIDE. If the board changed, set the
         // changed local variable to true.
-        this.board.setViewingPerspective(side);
-        for (int i = 0; i < this.board.size(); i += 1) {
-            boolean b = this.changeOnecol(i);
+        board.setViewingPerspective(side);
+        for (int i = 0; i < board.size(); i += 1) {
+            boolean b = changeOnecol(i);
             if (b) {
                 changed = true;
             }
         }
-        this.board.setViewingPerspective(Side.NORTH);
+        board.setViewingPerspective(Side.NORTH);
         checkGameOver();
         if (changed) {
             setChanged();
@@ -130,10 +130,10 @@ public class Model extends Observable {
 
     public boolean changeOnecol(int col) {
         boolean changed = false;
-        int rowCanMove = this.board.size() - 1;
+        int rowCanMove = board.size() - 1;
         int rowCanMove_value = 0;
         for (int r = rowCanMove; r >= 0; r -= 1) {
-            Tile tile = this.board.tile(col, r);
+            Tile tile = board.tile(col, r);
             if (tile == null) {
                 continue;
             }
@@ -141,13 +141,13 @@ public class Model extends Observable {
             if (r == rowCanMove) {
                 rowCanMove_value = value;
             } else if (value == rowCanMove_value) {
-                this.board.move(col, rowCanMove, tile);
-                this.score += this.board.tile(col, rowCanMove).value();
+                board.move(col, rowCanMove, tile);
+                score += board.tile(col, rowCanMove).value();
                 rowCanMove -= 1;
                 rowCanMove_value = 0;
                 changed = true;
             } else if (rowCanMove_value == 0) {
-                this.board.move(col, rowCanMove, tile);
+                board.move(col, rowCanMove, tile);
                 rowCanMove_value = value;
                 changed = true;
             } else {
@@ -155,7 +155,7 @@ public class Model extends Observable {
                     rowCanMove = r;
                     rowCanMove_value = value;
                 } else {
-                    this.board.move(col, rowCanMove - 1, tile);
+                    board.move(col, rowCanMove - 1, tile);
                     rowCanMove -= 1;
                     rowCanMove_value = value;
                     changed = true;
