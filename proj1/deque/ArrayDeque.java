@@ -40,8 +40,9 @@ public class ArrayDeque<T> {
         items[nextFirst] = item;
         if (nextFirst == 0) {
             nextFirst = items.length - 1;
+        } else {
+            nextFirst -= 1;
         }
-        nextFirst -= 1;
         size += 1;
     }
 
@@ -52,8 +53,9 @@ public class ArrayDeque<T> {
         items[nextLast] = item;
         if (nextLast == items.length - 1) {
             nextLast = 0;
+        } else  {
+            nextLast += 1;
         }
-        nextLast += 1;
         size += 1;
     }
 
