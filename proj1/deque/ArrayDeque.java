@@ -72,7 +72,7 @@ public class ArrayDeque<T> {
         if (i == items.length) {
             i = 0;
         }
-        while (i != nextLast) {
+        for (int n = 0; n < size; n += 1) {
             System.out.print(items[i] + " ");
             i += 1;
             if (i == items.length) {
