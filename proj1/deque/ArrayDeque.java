@@ -1,7 +1,5 @@
 package deque;
 
-import afu.org.checkerframework.checker.oigj.qual.O;
-
 public class ArrayDeque<T> {
     private T[] items;
     private int size;
