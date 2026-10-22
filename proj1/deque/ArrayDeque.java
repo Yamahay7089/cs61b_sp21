@@ -83,6 +83,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if (isEmpty()) {
+            return null;
+        }
         int i = (nextFirst + 1) % items.length;
         T x = items[i];
         items[i] = null;
@@ -95,6 +98,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if (isEmpty()) {
+            return null;
+        }
         int i = (nextLast - 1 + items.length) % items.length;
         T x = items[i];
         items[i] = null;
